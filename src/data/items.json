@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "Volvo XC40",
+    "price": 26000,
+    "imgUrl": "/imgs/volvo-xc40.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Audi Q3",
+    "price": 35000,
+    "imgUrl": "/imgs/audi-q3.jpg"
+  },
+
+  {
+    "id": 3,
+    "name": "Ford Kuga",
+    "price": 22000,
+    "imgUrl": "/imgs/ford-kuga.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Seat Tarraco",
+    "price": 26000,
+    "imgUrl": "/imgs/seat-tarraco.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mercedes GLA",
+    "price": 22000,
+    "imgUrl": "/imgs/benz-gla.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Mercedes A200",
+    "price": 32000,
+    "imgUrl": "/imgs/benz-a200.jpg"
+  }
+]
