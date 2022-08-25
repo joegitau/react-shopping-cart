@@ -1,12 +1,8 @@
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
+import Cart from '../components/Cart';
+import { ShoppingCartContext } from '../hooks/useShoppingCart';
 
-import { ICartItem, IShoppingCartContext, IShoppingCartProvider } from '../interfaces/ShoppingCart';
-
-const ShoppingCartContext = createContext({} as IShoppingCartContext);
-
-export const useShoppingCart = () => {
-  return useContext(ShoppingCartContext);
-};
+import { ICartItem, IShoppingCartProvider } from '../interfaces/ShoppingCart';
 
 export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
   const [cartItems, setCartItems] = useState<ICartItem[]>([]);
@@ -79,6 +75,7 @@ export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
       }}
     >
       {children}
+      <Cart isOpen={isOpen} />
     </ShoppingCartContext.Provider>
   );
 };
