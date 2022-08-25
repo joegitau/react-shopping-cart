@@ -4,3 +4,4 @@ An intermediate-level shopping cart spawn from _Vite_ - **build tool providing m
 
 - Built around Typescript and React.Bootstrap
 - Takes into use Hooks - mainly useState, useContext and some custom hooks to manage state
+- Stores cart info to localStorage
