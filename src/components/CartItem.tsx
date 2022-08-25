@@ -31,8 +31,14 @@ const CartItem = ({ id, quantity }: ICartItem) => {
       {quantity > 0 && (
         <div className="text-dark border border-warning rounded px-1 py-1">{quantity}</div>
       )}
-      <div className="text-danger">{formatCurrency(quantity * item?.price)}</div>
-      <Button variant="outline-danger" size="sm" onClick={() => removeFromCart(item?.id)}></Button>
+      <div className="text-warning">{formatCurrency(quantity * item?.price)}</div>
+      <Button
+        variant="outline-danger rounded-circle"
+        size="sm"
+        onClick={() => removeFromCart(item?.id)}
+      >
+        &times;
+      </Button>
     </Stack>
   );
 };
