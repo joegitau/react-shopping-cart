@@ -10,8 +10,9 @@ export const useShoppingCart = () => {
 
 export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
   const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // reducers
+  // dispatchers
   const getItemQty = (id: number) => {
     return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
@@ -58,8 +59,25 @@ export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
     return setCartItems((currItems) => currItems.filter((item) => item.id !== id));
   };
 
+  // cart
+  const cartQuantity = cartItems.reduce((qty, item) => item.quantity + qty, 0);
+
+  const openCart = () => setIsOpen(true);
+  const closeCart = () => setIsOpen(false);
+
   return (
-    <ShoppingCartContext.Provider value={{ getItemQty, incrementCartQty, decrementCartQty, removeFromCart }}>
+    <ShoppingCartContext.Provider
+      value={{
+        getItemQty,
+        incrementCartQty,
+        decrementCartQty,
+        removeFromCart,
+        openCart,
+        closeCart,
+        cartQuantity,
+        cartItems,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );

@@ -9,6 +9,12 @@ export interface IShoppingCartContext {
   incrementCartQty: (id: number) => void;
   decrementCartQty: (id: number) => void;
   removeFromCart: (id: number) => void;
+
+  // cart
+  openCart: () => void;
+  closeCart: () => void;
+  cartQuantity: number;
+  cartItems: ICartItem[];
 }
 
 export interface ICartItem {
