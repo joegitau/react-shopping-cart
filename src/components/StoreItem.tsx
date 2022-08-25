@@ -1,10 +1,12 @@
 import { Button, Card } from 'react-bootstrap';
+import { useShoppingCart } from '../context/ShoppingCartContext';
 
 import { IStoreItem } from '../interfaces/StoreItem';
 import { formatCurrency } from '../utils/formatCurrency';
 
 const StoreItem = ({ id, name, price, imgUrl }: IStoreItem) => {
-  const qty = 1;
+  const { getItemQty, incrementCartQty, decrementCartQty, removeFromCart } = useShoppingCart();
+  const quantity = getItemQty(id);
 
   return (
     <Card>
@@ -17,24 +19,24 @@ const StoreItem = ({ id, name, price, imgUrl }: IStoreItem) => {
       </Card.Body>
       <Card.Footer className="">
         <div className="d-flex justify-content-center">
-          {qty === 0 ? (
-            <Button className="w-50" variant="warning">
+          {quantity === 0 ? (
+            <Button className="w-50" variant="warning" onClick={() => incrementCartQty(id)}>
               Buy Now
             </Button>
           ) : (
-            <div className="d-flex justify-content-around">
+            <div className="d-flex justify-content-between">
               <div className="d-flex align-items-center flex-column" style={{ gap: '.5rem' }}>
                 <div className="d-flex align-items-center justify-content-center" style={{ gap: '.5rem' }}>
-                  <Button variant="warning" size="sm">
+                  <Button variant="warning" size="sm" onClick={() => decrementCartQty(id)}>
                     -
                   </Button>
-                  <span>{qty}</span>
-                  <Button variant="warning" size="sm">
+                  <span>{quantity}</span>
+                  <Button variant="warning" size="sm" onClick={() => incrementCartQty(id)}>
                     +
                   </Button>
                 </div>
               </div>
-              <Button variant="danger" size="sm" className="ml-5">
+              <Button variant="danger" size="sm" className="ml-5" onClick={() => removeFromCart(id)}>
                 Remove
               </Button>
             </div>

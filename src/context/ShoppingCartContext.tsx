@@ -37,11 +37,25 @@ export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
   };
 
   const decrementCartQty = (id: number) => {
-    return;
+    return setCartItems((currItems) => {
+      const foundItem = currItems.find((item) => item.id === id);
+
+      if (foundItem?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
   };
 
   const removeFromCart = (id: number) => {
-    return;
+    return setCartItems((currItems) => currItems.filter((item) => item.id !== id));
   };
 
   return (
