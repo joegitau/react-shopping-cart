@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import Cart from '../components/Cart';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { ShoppingCartContext } from '../hooks/useShoppingCart';
 
 import { ICartItem, IShoppingCartProvider } from '../interfaces/ShoppingCart';
 
 export const ShoppingCartProvider = ({ children }: IShoppingCartProvider) => {
-  const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<ICartItem[]>('shopping-cart', []);
   const [isOpen, setIsOpen] = useState(false);
 
   // dispatchers

@@ -7,7 +7,6 @@ import { useShoppingCart } from '../hooks/useShoppingCart';
 
 const CartItem = ({ id, quantity }: ICartItem) => {
   const { cartQuantity, removeFromCart } = useShoppingCart();
-  console.log(cartQuantity);
 
   const item = storeItems.find((item) => item.id === id);
 
